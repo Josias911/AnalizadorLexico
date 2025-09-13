@@ -64,20 +64,5 @@ Verifica si se pasó un archivo como argumento, o lo pide por consola. Crea un o
 Ejecución por terminal:
 python AUTOMATAS_CODIGO_TOKENS.py ejemplo_algoritmo.txt
 Salida esperada en consola:
+<img width="972" height="457" alt="image" src="https://github.com/user-attachments/assets/9f83b036-c564-43b4-b8f3-eadd2323f281" />
 
-==================================================
-RESUMEN DEL ANÁLISIS
-==================================================
-Tokens reconocidos: 45
-Errores encontrados: 2
-
-Errores encontrados:
-  Línea 3, Columna 12: '@'
-  Línea 7, Columna 5: '$'
-
-El reporte detallado se guardó en: C:\Users\Usuario\Documents\Analisis_20250912_203045.txt
-
-5. Aplicaciones
-• Verificar la validez léxica de algoritmos en pseudocódigo.
-• Generar reportes útiles para la depuración.
-• Base para construir un compilador o intérprete.
