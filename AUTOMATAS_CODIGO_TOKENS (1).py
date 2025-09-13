@@ -31,19 +31,3 @@ class AnalizadorLexico:
         self.conteo = defaultdict(lambda: defaultdict(int))
         self.errores = []
         self.todos_tokens = []
-        
-    def analizar_archivo(self, archivo_entrada):
-        try:
-            with open(archivo_entrada, 'r', encoding='utf-8') as f:
-                contenido = f.read()
-            
-            # Primero eliminar comentarios de bloque
-            contenido = self.pattern_bloque.sub('', contenido)
-            
-            return self.analizar(contenido)
-        except FileNotFoundError:
-            print(f"Error: No se pudo encontrar el archivo '{archivo_entrada}'")
-            return False
-        except Exception as e:
-            print(f"Error al leer el archivo: {e}")
-            return False
