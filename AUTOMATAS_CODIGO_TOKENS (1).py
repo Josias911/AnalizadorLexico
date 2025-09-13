@@ -103,4 +103,54 @@ def analizar_archivo(self, archivo_entrada):
                     pos += 1
         
         return tokens
+            def generar_reporte_completo(self, archivo_entrada, archivo_salida):
+        try:
+            # Crear directorio si no existe
+            directorio = os.path.dirname(archivo_salida)
+            if directorio and not os.path.exists(directorio):
+                os.makedirs(directorio)
+                
+            with open(archivo_salida, 'w', encoding='utf-8') as f:
+                # Encabezado del reporte
+                f.write("=" * 60 + "\n")
+                f.write("ANÁLISIS LÉXICO - REPORTE DE CLASIFICACIÓN\n")
+                f.write("=" * 60 + "\n")
+                f.write(f"Archivo analizado: {archivo_entrada}\n")
+                f.write(f"Fecha de análisis: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                f.write("=" * 60 + "\n\n")
+                
+                # 1. RESUMEN GENERAL
+                f.write("1. RESUMEN GENERAL\n")
+                f.write("-" * 40 + "\n")
+                total_tokens = len(self.todos_tokens)
+                total_errores = len(self.errores)
+                
+                f.write(f"Total de tokens encontrados: {total_tokens}\n")
+                f.write(f"Total de errores léxicos: {total_errores}\n")
+                f.write(f"Porcentaje de éxito: {((total_tokens/(total_tokens + total_errores)) * 100 if total_tokens + total_errores > 0 else 100):.2f}%\n\n")
+                
+                # 2. CLASIFICACIÓN DETALLADA POR TIPO
+                f.write("2. CLASIFICACIÓN DETALLADA POR TIPO\n")
+                f.write("-" * 40 + "\n")
+                
+                categorias = {
+                    'PALABRA_RESERVADA': 'PALABRAS RESERVADAS',
+                    'VARIABLE': 'VARIABLES',
+                    'NUMERO': 'NÚMEROS',
+                    'CADENA_TEXTO': 'CADENAS DE TEXTO',
+                    'OPERADOR_ARITMETICO': 'OPERADORES ARITMÉTICOS',
+                    'OPERADOR_RELACIONAL': 'OPERADORES RELACIONALES',
+                    'SIGNO_AGRUPACION': 'SIGNOS DE AGRUPACIÓN',
+                    'COMA': 'COMAS',
+                    'FIN_LINEA': 'FIN DE LÍNEA'
+                }
+
+                
+                for token_type, categoria in categorias.items():
+                    if token_type in self.conteo:
+                        f.write(f"\n{categoria}:\n")
+                        for valor, conteo in sorted(self.conteo[token_type].items()):
+                            f.write(f"  {valor}: {conteo}\n")
+
+
 
