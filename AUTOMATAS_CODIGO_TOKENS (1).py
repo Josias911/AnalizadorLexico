@@ -152,5 +152,57 @@ def analizar_archivo(self, archivo_entrada):
                         for valor, conteo in sorted(self.conteo[token_type].items()):
                             f.write(f"  {valor}: {conteo}\n")
 
-
-
+   # 3. TABLA DE CONTEOS (como en el ejemplo del proyecto)
+                f.write("\n3. TABLA DE CONTEOS\n")
+                f.write("-" * 40 + "\n")
+                f.write("| Elemento            | Palabra       | Conteo |\n")
+                f.write("|---------------------|---------------|--------|\n")
+                
+                # Palabras reservadas
+                if 'PALABRA_RESERVADA' in self.conteo:
+                    primera = True
+                    for palabra, conteo in sorted(self.conteo['PALABRA_RESERVADA'].items()):
+                        if primera:
+                            f.write(f"| Palabras Reservadas | {palabra:<13} | {conteo:<6} |\n")
+                            primera = False
+                        else:
+                            f.write(f"|                     | {palabra:<13} | {conteo:<6} |\n")
+                
+                # Signos de agrupación
+                if 'SIGNO_AGRUPACION' in self.conteo:
+                    primera = True
+                    for signo, conteo in sorted(self.conteo['SIGNO_AGRUPACION'].items()):
+                        if primera:
+                            f.write(f"| Signos Agrupación   | {signo:<13} | {conteo:<6} |\n")
+                            primera = False
+                        else:
+                            f.write(f"|                     | {signo:<13} | {conteo:<6} |\n")
+                
+                # Operadores
+                if 'OPERADOR_ARITMETICO' in self.conteo:
+                    primera = True
+                    for op, conteo in sorted(self.conteo['OPERADOR_ARITMETICO'].items()):
+                        if primera:
+                            f.write(f"| Operadores Aritm.   | {op:<13} | {conteo:<6} |\n")
+                            primera = False
+                        else:
+                            f.write(f"|                     | {op:<13} | {conteo:<6} |\n")
+                
+                # Variables
+                if 'VARIABLE' in self.conteo:
+                    primera = True
+                    for var, conteo in sorted(self.conteo['VARIABLE'].items()):
+                        if primera:
+                            f.write(f"| Variables           | {var:<13} | {conteo:<6} |\n")
+                            primera = False
+                        else:
+                            f.write(f"|                     | {var:<13} | {conteo:<6} |\n")
+                
+                # 4. LISTA COMPLETA DE TOKENS
+                f.write("\n4. LISTA COMPLETA DE TOKENS\n")
+                f.write("-" * 40 + "\n")
+                f.write("| Línea | Columna | Tipo                 | Valor\n")
+                f.write("|-------|---------|----------------------|---------\n")
+                
+                for token in self.todos_tokens:
+                    f.write(f"| {token['linea']:<5} | {token['columna']:<7} | {token['tipo']:<20} | {token['valor']}\n")
