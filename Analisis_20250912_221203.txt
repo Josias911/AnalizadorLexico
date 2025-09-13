@@ -109,7 +109,6 @@ OPERADORES ARITMÉTICOS: 3
 SIGNOS DE AGRUPACIÓN: 2
 TOTAL TOKENS: 24
 TOTAL ERRORES: 3
-
 ============================================================
 FIN DEL REPORTE
 ============================================================
