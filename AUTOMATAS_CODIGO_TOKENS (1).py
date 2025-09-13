@@ -206,3 +206,77 @@ def analizar_archivo(self, archivo_entrada):
                 
                 for token in self.todos_tokens:
                     f.write(f"| {token['linea']:<5} | {token['columna']:<7} | {token['tipo']:<20} | {token['valor']}\n")
+ # 5. ERRORES ENCONTRADOS
+                if self.errores:
+                    f.write("\n5. ERRORES LÉXICOS\n")
+                    f.write("-" * 40 + "\n")
+                    f.write("| Línea | Columna | Carácter | Descripción\n")
+                    f.write("|-------|---------|----------|------------\n")
+                    
+                    for error in self.errores:
+                        f.write(f"| {error['linea']:<5} | {error['columna']:<7} | {error['valor']:<8} | Carácter no reconocido\n")
+                
+                # 6. ESTADÍSTICAS FINALES
+                f.write("\n6. ESTADÍSTICAS FINALES\n")
+                f.write("-" * 40 + "\n")
+                for token_type in categorias.keys():
+                    if token_type in self.conteo:
+                        total = sum(self.conteo[token_type].values())
+                        f.write(f"{categorias[token_type]}: {total}\n")
+                
+                f.write(f"TOTAL TOKENS: {total_tokens}\n")
+                f.write(f"TOTAL ERRORES: {total_errores}\n")
+                
+                f.write("\n" + "=" * 60 + "\n")
+                f.write("FIN DEL REPORTE\n")
+                f.write("=" * 60 + "\n")
+            
+            print(f"✓ Reporte completo generado en: '{archivo_salida}'")
+            return True
+        except Exception as e:
+            print(f"✗ Error al generar el reporte: {e}")
+            return False
+
+def main():
+    if len(sys.argv) > 1:
+        archivo_entrada = sys.argv[1]
+    else:
+        archivo_entrada = input("Por favor, ingrese la ruta del archivo a analizar: ")
+    
+    analizador = AnalizadorLexico()
+    
+    if analizador.analizar_archivo(archivo_entrada):
+        # Carpeta del archivo de entrada
+        carpeta_actual = os.path.dirname(archivo_entrada)
+        nombre_salida = f"Analisis_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+        ruta_completa = os.path.join(carpeta_actual, nombre_salida)
+
+        
+        # Generar reporte completo en directorio especifico
+        analizador.generar_reporte_completo(archivo_entrada, ruta_completa)
+        
+        # Mostrar resumen en consola
+        print("\n" + "=" * 50)
+        print("RESUMEN DEL ANÁLISIS")
+        print("=" * 50)
+        
+        total_tokens = len(analizador.todos_tokens)
+        total_errores = len(analizador.errores)
+        
+        print(f"Tokens reconocidos: {total_tokens}")
+        print(f"Errores encontrados: {total_errores}")
+        
+        if total_errores > 0:
+            print("\nErrores encontrados:")
+            for error in analizador.errores:
+                print(f"  Línea {error['linea']}, Columna {error['columna']}: '{error['valor']}'")
+        else:
+            print("✓ No se encontraron errores léxicos")
+            
+        print(f"\nEl reporte detallado se guardó en: {ruta_completa}")
+        
+    else:
+        print("El análisis no pudo completarse")
+
+if __name__ == "__main__":
+    main()
