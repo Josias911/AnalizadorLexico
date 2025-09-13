@@ -1,0 +1,115 @@
+============================================================
+ANÁLISIS LÉXICO - REPORTE DE CLASIFICACIÓN
+============================================================
+Archivo analizado: 123.txt
+Fecha de análisis: 2025-09-12 22:12:03
+============================================================
+
+1. RESUMEN GENERAL
+----------------------------------------
+Total de tokens encontrados: 24
+Total de errores léxicos: 3
+Porcentaje de éxito: 88.89%
+
+2. CLASIFICACIÓN DETALLADA POR TIPO
+----------------------------------------
+
+PALABRAS RESERVADAS:
+  Algoritmo: 1
+  FinAlgoritmo: 1
+
+VARIABLES:
+  TestErrores: 1
+  a: 1
+  b: 1
+  function: 1
+  hola: 1
+  return: 1
+  verdadero: 1
+  x: 1
+  y: 1
+  z: 1
+
+NÚMEROS:
+  10: 1
+  15: 1
+  3: 1
+  5: 1
+
+OPERADORES ARITMÉTICOS:
+  =: 3
+
+SIGNOS DE AGRUPACIÓN:
+  (: 1
+  ): 1
+
+3. TABLA DE CONTEOS
+----------------------------------------
+| Elemento            | Palabra       | Conteo |
+|---------------------|---------------|--------|
+| Palabras Reservadas | Algoritmo     | 1      |
+|                     | FinAlgoritmo  | 1      |
+| Signos Agrupación   | (             | 1      |
+|                     | )             | 1      |
+| Operadores Aritm.   | =             | 3      |
+| Variables           | TestErrores   | 1      |
+|                     | a             | 1      |
+|                     | b             | 1      |
+|                     | function      | 1      |
+|                     | hola          | 1      |
+|                     | return        | 1      |
+|                     | verdadero     | 1      |
+|                     | x             | 1      |
+|                     | y             | 1      |
+|                     | z             | 1      |
+
+4. LISTA COMPLETA DE TOKENS
+----------------------------------------
+| Línea | Columna | Tipo                 | Valor
+|-------|---------|----------------------|---------
+| 1     | 1       | PALABRA_RESERVADA    | Algoritmo
+| 1     | 11      | VARIABLE             | TestErrores
+| 3     | 1       | VARIABLE             | x
+| 3     | 3       | OPERADOR_ARITMETICO  | =
+| 3     | 5       | NUMERO               | 10
+| 3     | 10      | NUMERO               | 5
+| 3     | 11      | FIN_LINEA            | ;
+| 4     | 1       | VARIABLE             | y
+| 4     | 3       | OPERADOR_ARITMETICO  | =
+| 4     | 5       | NUMERO               | 15
+| 4     | 10      | NUMERO               | 3
+| 4     | 11      | FIN_LINEA            | ;
+| 5     | 1       | VARIABLE             | z
+| 5     | 3       | OPERADOR_ARITMETICO  | =
+| 5     | 5       | VARIABLE             | a
+| 5     | 9       | VARIABLE             | b
+| 5     | 10      | FIN_LINEA            | ;
+| 8     | 1       | VARIABLE             | function
+| 8     | 10      | VARIABLE             | hola
+| 8     | 14      | SIGNO_AGRUPACION     | (
+| 8     | 15      | SIGNO_AGRUPACION     | )
+| 9     | 1       | VARIABLE             | return
+| 9     | 8       | VARIABLE             | verdadero
+| 10    | 1       | PALABRA_RESERVADA    | FinAlgoritmo
+
+5. ERRORES LÉXICOS
+----------------------------------------
+| Línea | Columna | Carácter | Descripción
+|-------|---------|----------|------------
+| 3     | 8       | @        | Carácter no reconocido
+| 4     | 8       | #        | Carácter no reconocido
+| 5     | 7       | ~        | Carácter no reconocido
+
+6. ESTADÍSTICAS FINALES
+----------------------------------------
+PALABRAS RESERVADAS: 2
+VARIABLES: 10
+NÚMEROS: 4
+OPERADORES ARITMÉTICOS: 3
+SIGNOS DE AGRUPACIÓN: 2
+TOTAL TOKENS: 24
+TOTAL ERRORES: 3
+
+============================================================
+FIN DEL REPORTE
+============================================================

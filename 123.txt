@@ -1,0 +1,10 @@
+Algoritmo TestErrores
+
+x = 10 @ 5;    
+y = 15 # 3;     
+z = a ~ b;     
+
+
+function hola()
+return verdadero 
+FinAlgoritmo
